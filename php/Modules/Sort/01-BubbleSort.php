@@ -9,7 +9,7 @@
 
 function BubbleSort($arr){
     $len = count($arr);
-    for( $i=0 ; $i<$len ; $i++ ){
+for( $i=0 ; $i<$len ; $i++ ){
         for( $j=0 ; $j<$len-i ; $j++ ){
             if( $arr[$j]>$arr[$j+1] ){
                 $tmp = $arr[$j+1];
