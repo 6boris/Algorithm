@@ -4,6 +4,9 @@
  * @param  array $arr 
  * @return array
  */
+
+ 
+
 function reverse($arr)
 {
     $n = count($arr);
@@ -22,4 +25,3 @@ function reverse($arr)
 
 $arr = [1,2,3,4,5,6,7,8,9,10];
 print_r(reverse($arr));
-
