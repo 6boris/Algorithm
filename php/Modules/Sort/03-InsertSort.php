@@ -23,5 +23,5 @@ function InsertSort($arr){
     return $arr;
 }
 
-$arr = [1,2,6,5,3,8,7,11,2];
+
 print_r(InsertSort($arr)); 
