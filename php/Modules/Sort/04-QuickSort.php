@@ -29,7 +29,11 @@ function QuickSort($arr){
 } 
 
 
-$arr = [1,2,6,5,3,8,7,11,2];
-print_r( QuickSort($arr) );
+$a = array_rand(range(1,10000), 9000);
+shuffle($a); //打乱数组的顺序
+$t1 = microtime(true);
+QuickSort($a); //冒泡排序
+$t2 = microtime(true);
+echo "快速排序用时：".(($t2-$t1)*1000).'ms'."\n";
 
 

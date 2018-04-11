@@ -10,8 +10,8 @@
 function BubbleSort($arr){
     $len = count($arr);
 for( $i=0 ; $i<$len ; $i++ ){
-        for( $j=0 ; $j<$len-i ; $j++ ){
-            if( $arr[$j]>$arr[$j+1] ){
+        for( $j=0 ; $j < $len-$i-1 ; $j++ ){
+            if( $arr[$j] > $arr[$j+1] ){
                 $tmp = $arr[$j+1];
                 $arr[$j+1] = $arr[$j];
                 $arr[$j] = $tmp;
@@ -21,8 +21,13 @@ for( $i=0 ; $i<$len ; $i++ ){
     return $arr;
 }
 
-$arr = [1,2,3,7,6,1,9,8,3];
 
-print_r(BubbleSort($arr));
+$a = array_rand(range(1,10000), 9000);
+shuffle($a); //打乱数组的顺序
+$t1 = microtime(true);
+BubbleSort($a); //冒泡排序
+$t2 = microtime(true);
+echo "冒泡排序用时：".(($t2-$t1)*1000).'ms'."\n";
+
 
 

@@ -24,4 +24,9 @@ function InsertSort($arr){
 }
 
 
-print_r(InsertSort($arr)); 
+$a = array_rand(range(1,10000), 9000);
+shuffle($a); //打乱数组的顺序
+$t1 = microtime(true);
+InsertSort($a); //冒泡排序
+$t2 = microtime(true);
+echo "插入排序用时：".(($t2-$t1)*1000).'ms'."\n";

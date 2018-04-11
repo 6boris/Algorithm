@@ -25,8 +25,12 @@ function SelectSort($arr){
 }
 
 
-$arr = [2,5,6,8,2,3,1,44,2];
-print_r(SelectSort($arr));
+$a = array_rand(range(1,10000), 9000);
+shuffle($a); //打乱数组的顺序
+$t1 = microtime(true);
+SelectSort($a); //冒泡排序
+$t2 = microtime(true);
+echo "选择排序用时：".(($t2-$t1)*1000).'ms'."\n";
 
 
 
