@@ -28,5 +28,9 @@ function get_prime($n)
 }
 
 
+function index(){
+    echo "123";
+}
+index();
 
 print_r(get_prime(123));
