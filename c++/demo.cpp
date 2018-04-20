@@ -1,22 +1,30 @@
 #include <iostream>
-#include <stack>
-
 using namespace std;
 
-int main() {
-    int i = 0;
-    stack<int> first;
-    cout << "size of first: " << first.size() << endl;
-    cout <<" demo"<<endl;
-    for (int i=0; i<6; i++)
-        first.push(i);
-    cout << "size of first: " << first.size() << endl;
+bool IsOk(char ch)
+{
+if (ch=='A'||ch=='E'||ch=='I'||ch=='O'||ch=='U')
+{
+return true;
+} 
+else
+{
+return false;
+}
+}
 
-   int demo = first.top();
-   int size = first.size();
-    cout<<"--"<<demo;
-    cout<<size;
+int main()
+{
+char ch;
+int count=0;
+while ((ch=getchar())!='\n')
+{
+if (IsOk(ch))
+{
+count++;
+}
+}
 
-    return 0;
-
+cout<<"大写元音的总个数: "<<count<<endl;
+return 0;
 }
