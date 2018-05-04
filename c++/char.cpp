@@ -1,22 +1,22 @@
 #include<iostream>
+#include <vector>  
+
 using namespace std;
 
 int main(){
-    int n;
-    int sum = 0;
+    string str = "We Are Happy";
+    string::iterator it = str.begin();
 
-    cin>>n;
-    char a[n];
-    cin>>a;
-
-    for( int i=0 ; i<n-1 ; i++){
-        if(a[i]=='a' || a[i]=='e' || a[i]=='i'|| a[i]=='o'|| a[i]=='u'){
-            if(a[i+1]=='a' || a[i+1]=='e' || a[i+1]=='i'|| a[i+1]=='o'|| a[i+1]=='u'){
-                sum += 1;
-                // cout<<a[i]<<"-"<<a[i+1]<<endl;
-            }
-        }
+    int spacenum = 0;
+    int length = 0;
+    for( ; it<str.end() ; it++){
+        cout<<*it;
+        length++;
     }
-    cout<<sum;
+    cout<<length<<endl;
+    for( ; it<str.end() ; it++){
+        string tmp = it[1];
+    }
+        
     return 0;
 }
