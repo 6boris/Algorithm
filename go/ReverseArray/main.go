@@ -6,31 +6,30 @@ import (
 	"time"
 )
 
-func BubbleSort(array []int) {
-	swapCount := 1
-	for swapCount > 0 {
-		swapCount = 0
-		for itemIndex := 0; itemIndex < len(array)-1; itemIndex++ {
-			if array[itemIndex] > array[itemIndex+1] {
-				array[itemIndex], array[itemIndex+1] = array[itemIndex+1], array[itemIndex]
-				swapCount += 1
-			}
-		}
+func ReverseArray(array []int) {
+	i := 0
+	u := len(array) - 1
+	for i < u {
+		array[i], array[u] = array[u], array[i]
+		i, u = i+1, u-1
 	}
 }
 
 func main() {
 	// 生成随机长度的的数组
 	random := rand.New(rand.NewSource(time.Now().UnixNano()))
-	array := make([]int, 10000)
-
+	array := make([]int, 11)
 	for i := range array {
 		array[i] = random.Intn(100)
 	}
 
+	fmt.Println(array)
+
 	start := time.Now()
-	BubbleSort(array)
+	ReverseArray(array)
 	rangeTime := time.Since(start)
 	fmt.Println("Array Length: ", len(array))
 	fmt.Println("Run Time:     ", rangeTime)
+	fmt.Println(array)
+
 }

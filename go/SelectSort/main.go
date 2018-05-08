@@ -6,17 +6,15 @@ import (
 	"time"
 )
 
-func BubbleSort(array []int) {
-	swapCount := 1
-	for swapCount > 0 {
-		swapCount = 0
-		for itemIndex := 0; itemIndex < len(array)-1; itemIndex++ {
-			if array[itemIndex] > array[itemIndex+1] {
-				array[itemIndex], array[itemIndex+1] = array[itemIndex+1], array[itemIndex]
-				swapCount += 1
+func SelectSort(array []int) {
+	for i := 0; i < len(array); i++ {
+		for j := i + 1; j < len(array); j++ {
+			if array[i] > array[j] {
+				array[i], array[j] = array[j], array[i]
 			}
 		}
 	}
+
 }
 
 func main() {
@@ -29,7 +27,7 @@ func main() {
 	}
 
 	start := time.Now()
-	BubbleSort(array)
+	SelectSort(array)
 	rangeTime := time.Since(start)
 	fmt.Println("Array Length: ", len(array))
 	fmt.Println("Run Time:     ", rangeTime)
