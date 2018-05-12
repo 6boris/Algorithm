@@ -1,16 +1,11 @@
 package main
 
-import "github.com/astaxie/beego"
-
-type BeeferController struct {
-	beego.Controller
-}
-
-func (c *BeeferController) Get() {
-	c.Ctx.WriteString("Hello Bego")
-}
+import (
+	"fmt"
+)
 
 func main() {
-	beego.Router("/", &BeeferController{})
-	beego.Run(":8085")
+	for i := 1; i < 10; i++ {
+		fmt.Println("demo")
+	}
 }
