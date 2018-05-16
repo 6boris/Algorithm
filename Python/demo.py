@@ -1,8 +1,14 @@
 import string
 import random
-x = string.ascii_letters + string.digits + string.punctuation
-y = [random.choice(x) for i in range(1000)]
-z = ''.jon(y)
-d = dict()
-for ch in z
-    d[ch] = d.get(ch, 0)+1
+
+sscore = input('Input Your Soure:')
+score = int(sscore)
+degree = 'DCBAAE'
+if score > 100 or score < 0:
+    print('Score Wrong')
+else:
+    index = (score - 60)//10
+    if index >= 0:
+        print(degree[index])
+    else:
+        print(degree[-1])
