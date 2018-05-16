@@ -19,7 +19,7 @@
 
 using namespace std;
 
-class Solution{
+class Solution {
 public:
     void echo(vector<int> arr){
         pt();

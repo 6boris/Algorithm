@@ -25,8 +25,8 @@ public:
             }
             mid = left + (right - left) / 2;
             // rotateArray[left] rotateArray[right] rotateArray[mid]三者相等
-            // 无法确定中间元素是属于前面还是后面的递增子数组
-            // 只能顺序查找
+            // 无法确定中间元素是属于前面还是后面的递增子数组
+            // 只能顺序查找
             if(rotateArray[left] == rotateArray[right] && rotateArray[left]){
                 return MinOrder(rotateArray, left , right);
             }
