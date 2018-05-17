@@ -23,7 +23,24 @@ using namespace std;
 
 class Solution {
 public:
-
+    bool isValid(string str){
+        if (str == "") {
+            return false;
+        }
+        int status = 0;
+        for (int i=0 ; i<str.length() ; i++) {
+            if (str[i] != ')' && str[i] != '('){
+                return false;
+            }
+            if (str[i] == ')' && --status < 0) {
+                return false;
+            }
+            if (str[i] == '('){
+                status++;
+            }
+        }
+        return status == 0;
+    }
 private:
 
 };
@@ -32,11 +49,12 @@ private:
 int main()
 {
     Solution s;
-    vector<int> arr = {1,2,3,4,5,6,7,8};
-
-    for (int i=0 ; i<arr.size() ; i++) {
-        cout<<" "<<arr[i];
-    }
-
+    string str1 = "(())(())";
+    string str2 = "(())(()(()))";
+    string str3 = "(())(()(())";
+    
+    cout<<str1<<" "<<s.isValid(str1)<<endl;
+    cout<<str2<<" "<<s.isValid(str2)<<endl;
+    cout<<str3<<" "<<s.isValid(str3)<<endl;
     return 0;
 }
