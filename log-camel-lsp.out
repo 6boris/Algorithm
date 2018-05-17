@@ -16,3 +16,4 @@ SERVER: changeConfig: settings -> {0}
 SERVER: changeConfig: settings -> {0}
 Setting client pid to {0}
 SERVER: changeConfig: settings -> {0}
+SERVER: changeConfig: settings -> {0}
