@@ -24,6 +24,7 @@ func selectSort(arr []int) []int {
 		for j := i + 1; j < length; j++ {
 			if arr[min] > arr[j] {
 				min = j
+
 			}
 		}
 		arr[i], arr[min] = arr[min], arr[i]

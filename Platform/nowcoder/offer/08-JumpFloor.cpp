@@ -1,17 +1,17 @@
-#include<iostream>
-#include<vector>
-#include<string>
-#include<cmath>
-#include<algorithm>
-#include<map>
-#include<set>
-#include<utility>
-#include<queue>
-#include<sstream>
-#include<iterator>
-#include<math.h>
-#include<malloc.h>
-#include<string.h>
+#include <algorithm>
+#include <cmath>
+#include <iostream>
+#include <iterator>
+#include <malloc.h>
+#include <map>
+#include <math.h>
+#include <queue>
+#include <set>
+#include <sstream>
+#include <string.h>
+#include <string>
+#include <utility>
+#include <vector>
 #define TIME std::ios::sync_with_stdio(false)
 #define LL long long
 #define MAX 233
@@ -30,32 +30,32 @@ using namespace std;
 f(n) = f(n-1) + f(n-2)
 */
 
-
-class Solution{
+class Solution {
 public:
-    int jumpFloor(int num){
-        if(num <=2 ){
+    int jumpFloor(int num)
+    {
+        if (num <= 2) {
             return num;
         }
-        int frist = 1 , second = 2 , thrid = 0; 
-        for(int i=3 ; i<=num ; i++){
+        int frist = 1, second = 2, thrid = 0;
+        for (int i = 3; i <= num; i++) {
             thrid = frist + second;
             frist = second;
             second = thrid;
         }
         return thrid;
     }
-private:
 
+private:
 };
 
 int main()
 {
     Solution s;
-    cout<<"1: "<<s.jumpFloor(1)<<endl;
-    cout<<"2: "<<s.jumpFloor(2)<<endl;
-    cout<<"3: "<<s.jumpFloor(3)<<endl;
-    cout<<"4: "<<s.jumpFloor(4)<<endl;
-    cout<<"5: "<<s.jumpFloor(5)<<endl;
+    cout << "1: " << s.jumpFloor(1) << endl;
+    cout << "2: " << s.jumpFloor(2) << endl;
+    cout << "3: " << s.jumpFloor(3) << endl;
+    cout << "4: " << s.jumpFloor(4) << endl;
+    cout << "5: " << s.jumpFloor(5) << endl;
     return 0;
 }
