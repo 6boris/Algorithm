@@ -1,5 +1,6 @@
 # Algorithm
 * Record the code of the usual arithmetic exercises
+![Kayle Algorithm](http://kayle-vendor.oss-cn-shenzhen.aliyuncs.com/GitHub/Algorithm/Algorithm_Logo.png)
 
 
 ## Descrip
@@ -13,5 +14,4 @@
 
 
 
-![Kayle Algorithm](http://kayle-vendor.oss-cn-shenzhen.aliyuncs.com/GitHub/Algorithm/Algorithm_Logo.png)
 
