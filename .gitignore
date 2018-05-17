@@ -6,3 +6,4 @@
 /bin/
 *.exe
 *.out
+log-camel-lsp
