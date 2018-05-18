@@ -46,49 +46,14 @@ struct TreeNode {
 
 class Solution {
 public:
-    // 递归
-    void Mirror(TreeNode* pTreeRoot)
+    // 根据数组初始化树
+    TreeNode* Init(vector<int> arr, int index)
     {
-        if (pTreeRoot == NULL
-            && pTreeRoot->left == NULL
-            && pTreeRoot->right == NULL) {
-            return;
-        }
-        // 递归左右交换
-        TreeNode* pTemp = pTreeRoot->left;
-        pTreeRoot->left = pTreeRoot->right;
-        pTreeRoot->right = pTemp;
-        if (pTreeRoot->left) {
-            Mirror(pTreeRoot->left);
-        }
-        if (pTreeRoot->right) {
-            Mirror(pTreeRoot->right);
-        }
+        TreeNode* tree = new TreeNode(arr[index]);
+        tree = CreateBinaryTree(tree, arr, 0);
+        return tree;
     }
-    // 非递归
-    void Mirror1(TreeNode* pRoot)
-    {
-        if (pRoot == NULL
-            && pRoot->left == NULL
-            && pRoot->right == NULL) {
-            return;
-        }
-        stack<TreeNode*> stackNode;
-        stackNode.push(pRoot);
-        while (stackNode.size()) {
-            TreeNode* tree = stackNode.top();
-            stackNode.pop();
-            if (tree->left != NULL || tree->right != NULL) {
-                TreeNode* ptemp = tree->left;
-                tree->left = tree->right;
-                tree->right = ptemp;
-            }
-            if (tree->left)
-                stackNode.push(tree->left);
-            if (tree->right)
-                stackNode.push(tree->right);
-        }
-    }
+
     // 先序遍历
     void PreorderTraverse(TreeNode* pTreeRoot)
     {
@@ -172,14 +137,6 @@ public:
         }
     }
 
-    // 根据数组初始化树
-    TreeNode* Init(vector<int> arr)
-    {
-        TreeNode* tree = new TreeNode(0);
-        tree = CreateBinaryTree(tree, arr, 0);
-        return tree;
-    }
-
 private:
     // 递归创建树
     /*
@@ -189,37 +146,26 @@ private:
             int index           数据下标
 
     */
-
-    void CreatBiTree(TreeNode*& T, vector<int> arr, int index)
-    { // 先序递归创建二叉树
-        // 先按顺序驶入二叉树中节点的值(一个字符),空格字符代表空树
-        char ch;
-        for (int j = 0; j < arr.size(); ++j) {
-            if (arr[index] == -1) // getchar() 为逐个读入标准库函数
-                T = NULL;
-            else {
-                T = new TreeNode(0); // 产生新的子树
-                T->val = ch; // 由getchar()逐个读进来
-                CreatBiTree(T->left, arr, --index); // 递归创建左子树
-                CreatBiTree(T->right, arr, --index); // 递归创建右子树
+    TreeNode*
+    CreateBinaryTree(TreeNode* tree, vector<int> arr, int index)
+    {
+        if (index == arr.size()) {
+            return 0;
+        }
+        if (arr[index] == -1) {
+            tree = NULL;
+        } else {
+            if (!(tree = (TreeNode*)malloc(sizeof(TreeNode)))) {
+                cout << "Malloc ERROR" << endl;
+                return 0;
+            } else {
+                tree->val = arr[index];
+                tree->left = CreateBinaryTree(tree->left, arr, ++index);
+                tree->right = CreateBinaryTree(tree->right, arr, ++index);
             }
         }
+        return tree;
     }
-    TreeNode* CreateBinaryTree(TreeNode* root, vector<int> arr, int index)
-    {
-        cout << "index:" << index << " arr[index]:" << arr[index] << endl;
-        if (arr[index] == -1) {
-            return NULL;
-        }
-
-        if (index < arr.size()) {
-            root = new TreeNode(arr[index]);
-            root->left = CreateBinaryTree(root, arr, ++index);
-            root->right = CreateBinaryTree(root, arr, ++index);
-        }
-        return root;
-    }
-
     int getRandom(int start, int end)
     {
         return rand() % (start - end + 1) + start;
@@ -229,25 +175,31 @@ int main()
 {
     Solution s;
     vector<int> data = { 1, 2, 4, -1, -1, -1, 3, 5, -1, -1 };
-    // TreeNode* pTreeRoot = s.Init(data);
-    // cout << pTreeRoot->right->left->val << endl;
+    // TreeNode* pTreeRoot = s.Init(data, 5);
+    TreeNode* pTreeRoot = new TreeNode(1);
 
-    TreeNode* pTreeRoot = new TreeNode(8);
+    pTreeRoot->left = new TreeNode(3);
+    pTreeRoot->right = new TreeNode(5);
 
-    pTreeRoot->left = new TreeNode(6);
-    pTreeRoot->right = new TreeNode(10);
+    pTreeRoot->left->left = new TreeNode(7);
+    pTreeRoot->left->right = new TreeNode(10);
 
-    pTreeRoot->left->left = new TreeNode(5);
-    pTreeRoot->left->right = new TreeNode(7);
+    pTreeRoot->right->left = new TreeNode(13);
+    pTreeRoot->right->right = new TreeNode(9);
 
-    pTreeRoot->right->left = new TreeNode(9);
-    pTreeRoot->right->right = new TreeNode(11);
+    pTreeRoot->left->left->left = new TreeNode(15);
 
-    cout << "Source: " << endl;
+    cout << "Pre Traverse Recursion: " << endl;
     s.PreorderTraverse(pTreeRoot);
-    s.Mirror1(pTreeRoot);
-    cout << "\nMirror: " << endl;
-    s.PreorderTraverse(pTreeRoot);
-
+    cout << "\nPre Traverse No Recursion: " << endl;
+    s.PreorderTraverseNoRecursion(pTreeRoot);
+    cout << "\nMid Traverse Recursion: " << endl;
+    s.MidorderTraverse(pTreeRoot);
+    cout << "\nMid Traverse No Recursion: " << endl;
+    s.MidorderTraverseNoRecursion(pTreeRoot);
+    cout << "\nPost Traverse Recursion: " << endl;
+    s.PostorderTraversal(pTreeRoot);
+    cout << "\nPost Traverse No Recursion: " << endl;
+    s.PostorderTraversalNoRecursion(pTreeRoot);
     return 0;
 }

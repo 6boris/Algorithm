@@ -57,12 +57,36 @@ public:
         }
         return p;
     }
-    ListNode* Init(ListNode* pListHead, int length)
+    ListNode* createNode(int val)
     {
+        ListNode* p = new ListNode();
+        p->val = val;
+        p->next = NULL;
+        return p;
+    }
+
+    void Print(ListNode* pListHead)
+    {
+        if (pListHead == NULL) {
+            cout << "LinkList is empty" << endl;
+            return;
+        }
+        ListNode* temp = pListHead;
+        while (temp != NULL) {
+            cout << temp->val << " ";
+            temp = temp->next;
+        }
+        cout << endl;
+    }
+
+    ListNode* Init(int length)
+    {
+        ListNode* pListHead = new ListNode();
         ListNode* p = pListHead;
+
         while (--length > 0) {
             p->val = getRandom(1, 20);
-            p->next = new ListNode();
+            p->next = createNode(getRandom(1, 20));
             p = p->next;
         }
         return pListHead;
@@ -77,29 +101,8 @@ private:
 int main()
 {
     Solution s;
-    ListNode* Head = new ListNode();
-    ListNode* p = Head;
-    // s.Init(Head, 2);
-
-    Head->val = 1;
-    Head->next = new ListNode();
-    Head = Head->next;
-    Head->val = 2;
-    Head->next = new ListNode();
-    Head = Head->next;
-    Head->val = 3;
-    Head->next = new ListNode();
-    Head = Head->next;
-
-    // cout << p->val << " ";
-    // p = p->next;
-    // cout << p->val << " ";
-
-    // p = p->next;
-    // cout << p->val << " ";
-    while (p->next != NULL) {
-        cout << p->val << " ";
-        p = p->next;
-    }
+    ListNode* Head = s.Init(10);
+    s.Print(Head);
+    cout << s.FindKthToTail(Head, 11)->val << endl;
     return 0;
 }
