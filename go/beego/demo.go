@@ -1,18 +1,25 @@
 package main
 
 import (
-	"github.com/astaxie/beego"
+	"fmt"
+	"github.com/astaxie/beego/orm"
+	_ "github.com/go-sql-driver/mysql"
 )
 
-type MainController struct {
+type Demo struct {
 	beego.Controller
 }
 
-func (this *MainController) Get() {
-	this.Ctx.WriteString("<h1>Demo Page</h1>")
+func init() {
+	orm.RegisterDriver("mysql", orm.DRMySQL)
+
+	orm.RegisterDataBase("default", "mysql", "root:jia@/default?charset=utf8")
 }
 
-func main() {
-	beego.Router("/", &MainController{})
-	beego.Run()
+func (c *UserController) Demo() {
+	o := orm.NewOrm()
+	o.Using("default") // 默认使用 default，你可以指定为其他数据库
+	user := new(User)
+	user.Name = "slene"
+	fmt.Println(o.Insert(user))
 }
