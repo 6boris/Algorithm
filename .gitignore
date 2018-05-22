@@ -7,3 +7,4 @@
 *.exe
 *.out
 log-camel-lsp
+.vscode
