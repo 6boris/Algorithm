@@ -23,25 +23,26 @@ using namespace std;
 
 class Solution {
 public:
-    bool IsPopOrder(vector<int> pushV, vector<int> popV)
+    void echo(vector<int> arr)
     {
-        int len = pushV.size();
-        if (len == 0 || len != popV.size()) {
-            return false;
+        pt();
+        for (int i = 0; i < arr.size(); i++) {
+            cout << arr[i] << " ";
         }
-        int i, j;
-        while ()
     }
 
 private:
+    void pt()
+    {
+        cout << "Arr:" << endl;
+    }
 };
 
 int main()
 {
     Solution s;
-    vector<int> num1 = { 0, 1, 2, 3, 4, 5 };
-    vector<int> num2 = { 5, 4, 3, 2, 1, 0 };
+    vector<int> num = { 0, 1, 2, 3, 4, 5 };
 
-    s.IsPopOrder(num1, num2);
+    s.echo(num);
     return 0;
 }
