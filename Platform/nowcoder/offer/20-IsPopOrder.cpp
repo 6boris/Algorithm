@@ -30,7 +30,6 @@ public:
             return false;
         }
         int i, j;
-        while ()
     }
 
 private:

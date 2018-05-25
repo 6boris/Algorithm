@@ -1,14 +1,9 @@
-import string
-import random
+def fib(n):
+    a, b = 0, 1
+    while a < n:
+        print(a, end=' ')
+        a, b = b, a+b
+    print()
 
-sscore = input('Input Your Soure:')
-score = int(sscore)
-degree = 'DCBAAE'
-if score > 100 or score < 0:
-    print('Score Wrong')
-else:
-    index = (score - 60)//10
-    if index >= 0:
-        print(degree[index])
-    else:
-        print(degree[-1])
+
+fib(1000)
