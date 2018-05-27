@@ -12,6 +12,7 @@ public:
     {
         int size = rotateArray.size();
         if (size == 0) {
+            
             return 0;
         }
         int left = 0, right = size - 1;

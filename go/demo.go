@@ -58,4 +58,7 @@ func main() {
 	echo(arr)
 	arr = InsertSort(arr)
 	echo(arr)
+
+	fmt.Println("demo")
+
 }

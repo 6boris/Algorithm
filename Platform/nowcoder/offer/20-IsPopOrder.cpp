@@ -25,11 +25,18 @@ class Solution {
 public:
     bool IsPopOrder(vector<int> pushV, vector<int> popV)
     {
-        int len = pushV.size();
-        if (len == 0 || len != popV.size()) {
+        if (pushV.size() == 0) {
             return false;
         }
-        int i, j;
+        vector<int> stack;
+        for (int i = 0, j = 0; i < pushV.size();) {
+            stack.push_back(pushV[i++]);
+            while (j < popV.size() && stack.back() == popV[j]) {
+                stack.pop_back();
+                j++;
+            }
+        }
+        return stack.empty();
     }
 
 private:
@@ -40,7 +47,6 @@ int main()
     Solution s;
     vector<int> num1 = { 0, 1, 2, 3, 4, 5 };
     vector<int> num2 = { 5, 4, 3, 2, 1, 0 };
-
-    s.IsPopOrder(num1, num2);
+    cout << s.IsPopOrder(num1, num2) << endl;
     return 0;
 }
