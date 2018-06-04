@@ -1,48 +1,45 @@
-#include <algorithm>
-#include <cmath>
-#include <deque>
 #include <iostream>
-#include <iterator>
-#include <malloc.h>
-#include <map>
-#include <math.h>
-#include <queue>
-#include <set>
-#include <sstream>
-#include <stack>
-#include <string.h>
-#include <string>
-#include <utility>
-#include <vector>
-#define TIME std::ios::sync_with_stdio(false)
-#define LL long long
-#define MAX 233
-#define INF 0x3f3f3f3f
 
 using namespace std;
+
+int* selectionSort(int* A, int n)
+{
+    int tmp = 0;
+    for (int i = 0; i < n; i++) {
+        tmp = i;
+        for (int j = i + 1; j < n; j++) {
+            if (A[j] < A[tmp]) {
+                tmp = j;
+            }
+        }
+        if (tmp != i) {
+            swap(A[i], A[tmp]);
+        }
+    }
+    return A;
+}
+
+int* insertionSort(int* A, int n)
+{
+    for (int i = 0; i < n; i++) {
+        int tmp = A[i];
+        int j = i - 1;
+        while (j >= 0 && tmp < A[j]) {
+            A[j + 1] = A[j];
+            j--;
+        }
+        A[j + 1] = tmp;
+    }
+    return A;
+}
+
 int main()
 {
-    queue<int> list;
-    queue<int> que;
-    // if (pTreeRoot == NULL) {
-    //     return list;
-    // }
-    que.push(1);
-    que.push(2);
-    que.push(3);
-    que.push(4);
+    int arr[] = { 4, 3, 4, 3, 9, 5, 4, 3, 2, 1 };
+    insertionSort(arr, 10);
 
-    cout << que.size() << endl;
-
-    while (!que.empty()) {
-        cout << que.front() << " ";
-        que.pop();
-    }
-    while () {
-
-    }
-    for(int i=0 ; i<10 ; i++){
-        
+    for (int i = 0; i < 10; i++) {
+        cout << arr[i] << " ";
     }
 
     return 0;
