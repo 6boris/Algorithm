@@ -1,69 +1,49 @@
 #include <algorithm>
+#include <cmath>
+#include <deque>
 #include <iostream>
+#include <iterator>
+#include <malloc.h>
+#include <map>
+#include <math.h>
+#include <queue>
+#include <set>
+#include <sstream>
 #include <stack>
+#include <string.h>
 #include <string>
+#include <utility>
 #include <vector>
+#define TIME std::ios::sync_with_stdio(false)
+#define LL long long
+#define MAX 233
+#define INF 0x3f3f3f3f
 
 using namespace std;
-
-class Solution {
-public:
-    int minNumberInRotateArray(vector<int> rotateArray)
-    {
-        int size = rotateArray.size();
-        if (size == 0) {
-            
-            return 0;
-        }
-        int left = 0, right = size - 1;
-        int mid = 0;
-        while (rotateArray[left] >= rotateArray[right]) {
-            if (right - left == 1) {
-                mid = right;
-                break;
-            }
-            mid = left + (right - left) / 2;
-            if (rotateArray[left] == rotateArray[right] && rotateArray[left]) {
-                return MinOrder(rotateArray, left, right);
-            }
-            if (rotateArray[mid] >= rotateArray[left]) {
-                left = mid;
-            } else {
-                right = mid;
-            }
-        }
-        return rotateArray[mid];
-    }
-
-private:
-    int MinOrder(vector<int>& num, int left, int right)
-    {
-        int result = num[left];
-        for (int i = left + 1; i < right; i++) {
-            if (num[i] < result) {
-                result = num[i];
-            }
-        }
-        return result;
-    }
-};
-
 int main()
 {
-    Solution s;
-    // vector<int> num = {0, 1, 2, 3, 4, 5};
-    vector<int> num = {
-        4,
-        5,
-        6,
-        7,
-        1,
-        2,
-        3,
-    };
-    // vector<int> num = {2, 2, 2, 2, 1, 2};
+    queue<int> list;
+    queue<int> que;
+    // if (pTreeRoot == NULL) {
+    //     return list;
+    // }
+    que.push(1);
+    que.push(2);
+    que.push(3);
+    que.push(4);
 
-    int result = s.minNumberInRotateArray(num);
-    cout << result << endl;
+    cout << que.size() << endl;
+
+    while (!que.empty()) {
+        cout << que.front() << " ";
+        que.pop();
+    }
+    while () {
+
+    }
+    for(int i=0 ; i<10 ; i++){
+        
+    }
+
     return 0;
 }

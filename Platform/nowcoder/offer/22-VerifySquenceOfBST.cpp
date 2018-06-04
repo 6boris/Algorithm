@@ -23,26 +23,28 @@ using namespace std;
 
 class Solution {
 public:
-    void echo(vector<int> arr)
-    {
-        pt();
-        for (int i = 0; i < arr.size(); i++) {
-            cout << arr[i] << " ";
-        }
-    }
+   bool VerifySquenceOfBST(vector<int> sequence) {
+        int size = sequence.size();
+        if(0==size)return false;
+ 
+        int i = 0;
+        while(--size)
+        {
+            while(sequence[i++]<sequence[size]);
+            while(sequence[i++]>sequence[size]);
+            if(i<size)return false;
+            i=0;
+        }
+        return true;
+    }
 
 private:
-    void pt()
-    {
-        cout << "Arr:" << endl;
-    }
 };
 
 int main()
 {
     Solution s;
     vector<int> num = { 0, 1, 2, 3, 4, 5 };
-
-    s.echo(num);
+    cout<<s.VerifySquenceOfBST(num)<<endl;
     return 0;
 }
