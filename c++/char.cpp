@@ -10,14 +10,12 @@ int main()
 
     int spacenum = 0;
     int length = 0;
-    for (; it < str.end(); it++)
-    {
+    for (; it < str.end(); it++) {
         cout << *it;
         length++;
     }
     cout << length << endl;
-    for (; it < str.end(); it++)
-    {
+    for (; it < str.end(); it++) {
         string tmp = it[1];
     }
 
