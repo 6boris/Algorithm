@@ -1,45 +1,33 @@
+#include <algorithm>
+#include <cstring>
 #include <iostream>
-
 using namespace std;
 
-int* selectionSort(int* A, int n)
-{
-    int tmp = 0;
-    for (int i = 0; i < n; i++) {
-        tmp = i;
-        for (int j = i + 1; j < n; j++) {
-            if (A[j] < A[tmp]) {
-                tmp = j;
-            }
-        }
-        if (tmp != i) {
-            swap(A[i], A[tmp]);
-        }
-    }
-    return A;
-}
-
-int* insertionSort(int* A, int n)
-{
-    for (int i = 0; i < n; i++) {
-        int tmp = A[i];
-        int j = i - 1;
-        while (j >= 0 && tmp < A[j]) {
-            A[j + 1] = A[j];
-            j--;
-        }
-        A[j + 1] = tmp;
-    }
-    return A;
-}
+const int N = 15;
 
 int main()
 {
-    int arr[] = { 4, 3, 4, 3, 9, 5, 4, 3, 2, 1 };
-    insertionSort(arr, 10);
+    int v[N] = { 0, 8, 10, 6, 3, 7, 2 };
+    int w[N] = { 0, 4, 6, 2, 2, 5, 1 };
 
-    for (int i = 0; i < 10; i++) {
-        cout << arr[i] << " ";
+    int m[N][N];
+    int n = 6, c = 12;
+    memset(m, 0, sizeof(m));
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= c; j++) {
+            if (j >= w[i])
+                m[i][j] = max(m[i - 1][j], m[i - 1][j - w[i]] + v[i]);
+
+            else
+                m[i][j] = m[i - 1][j];
+        }
+    }
+
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= c; j++) {
+            cout << m[i][j] << ' ';
+        }
+        cout << endl;
     }
 
     return 0;
