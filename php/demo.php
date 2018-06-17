@@ -1,8 +1,3 @@
 <?php
-    $x="display"; 
-    ${$x.'_result'}(); 
-    
-function display_result(){
-        echo 'ok';
-    }
-?> 
+    echo $_SERVER('REMOTE_ADDR');
+    echo $_SERVER('SERVICE_ADDR');
